@@ -1,0 +1,189 @@
+{% extends 'templates/base.html' %}
+{% block title %}Card{% endblock %}
+{% block content %}
+{% load static %}
+
+		{% include 'templates/_partials/header.html' %}
+
+	<nav class="navbar">
+  	<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#"><img src="{% static 'img/logo.png' %}" alt=""></a>
+			</div>
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+					<i class="fa fa-close"></i>
+				</button>
+				<ul class="nav navbar-nav">
+					{% for i in ctgs %}
+					<li class="active"><a href="{% url 'category' slug=i.slug %}">{{ i.content }}</a></li>
+					{% endfor %}
+				</ul>
+
+			</div>
+		</div>
+	</nav>
+	<a href="#" class="bigrek"></a>
+	<div class="container wrapper">
+		<div class="longrek"></div>
+		<div class="clearfix"></div>
+		
+		<ol class="breadcrumb">
+			<li><a href="{% url 'index' %}">Главная</a></li>
+			<li><a href="{% url 'category' slug=new.ctg.slug %}">{{ new.ctg.content }}</a></li>
+			<li class="active">{{ new.title }}</li>
+		</ol>
+		<div class="row">
+			<div class="col-md-8 col-xs-12">
+				<div class="view_img"><img src="{{ new.img.url }}" alt=""></div>
+				<div class="news_box view">
+					<div class="view_title">{{ new.title }}</div>
+					<span class="date">{{ new.date }}</span>
+					<span class="news_type"><i class="fa fa-pencil"></i> {{ new.ctg.content }}</span>
+					<div class="view_desc">
+					<p>{{ new.short_description }}</p>
+					<p>{{ new.description }}</p>
+					<div id="bigfav" class="carousel slide view_slide" data-ride="carousel">
+						<div class="carousel-inner" role="listbox">
+						</div>
+					</div>
+				</div>
+				<ul class="tag">
+					<li><a href="#">#мода</a></li>
+					<li><a href="#">#новости</a></li>
+					<li><a href="#">#тег1</a></li>
+					<li><a href="#">#тег2</a></li>
+					<li><a href="#">#тег3</a></li>
+					<li><a href="#">#тег4</a></li>
+				</ul>
+				<div class="nav_news">
+					<a href="#" class="prev_news text-right">
+						<i class="fa fa-angle-left"></i>
+						Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+					</a>
+					<a href="#" class="next_news">
+						Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+						<i class="fa fa-angle-right"></i>
+					</a>
+					<div class="clearfix"></div>
+				</div>
+				<div class="comment">
+					<div class="title">Комменты</div>
+					<ul>
+						<li>
+							<div class="com_img"><img src="{% static 'img/ava.jpg' %}" alt=""></div>
+							<div class="com_info">
+								<div class="author">Adam Levine</div>
+								<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.</p>
+								<div class="date">02.02.2017</div>
+								<hr>
+							</div>
+							<ul class="sub">
+								<li>
+									<div class="com_img"><img src="{% static 'img/ava.jpg' %}" alt=""></div>
+									<div class="com_info">
+										<div class="author">Adam Levine</div>
+										<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.</p>
+										<div class="date">02.02.2017</div>
+										<hr>
+									</div>
+
+								</li>
+							</ul>
+						</li>
+
+					</ul>
+					<button class="btn add_comment">Добавить комментарий</button>
+					<div class="add_info">Приветствуются интересные и осмысленные комментарии по теме материала.</div>
+				</div>
+				</div>
+			</div>
+			<div class="col-md-4 col-xs-12">
+				<div class="head_title">Свежие новости</div>
+				<div id="listnews" class="carousel slide listnews" data-ride="carousel">
+					<div class="news_box">
+						<div class="carousel-inner" role="listbox">
+							<div class="item active">
+								<ul class="list_news">
+									{% for i in news %}
+										{% if forloop.counter < 5 %}
+									<li>
+										<div class="list_img"><img src="{{ i.img.url }}" alt=""></div>
+										<a href="{% url 'view' pk=i.id %}">{{ i.title }}.</a>
+										<span class="date">{{ i.date }}</span>
+										<span class="news_type"><i class="fa fa-pencil"></i>{{ i.ctg.content }}</span>
+									</li>
+										{% endif %}
+									{% endfor %}
+
+								</ul>
+							</div>
+							<div class="item">
+								<ul class="list_news">
+									{% for i in news %}
+									{% if forloop.counter > 5 and forloop.counter < 8 %}
+									<li>
+										<div class="list_img"><img src="{{ i.img.url }}" alt=""></div>
+										<a href="{% url 'view' pk=i.id %}">{{ i.title }}</a>
+										<span class="date">{{ i.date }}</span>
+										<span class="news_type"><i class="fa fa-pencil"></i>{{ i.ctg.content }}</span>
+									</li>
+									{% endif %}
+									{% endfor %}
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="indi_box">
+						<ol class="carousel-indicators">
+							<li data-target="#listnews" data-slide-to="0" class="active"></li>
+							<li data-target="#listnews" data-slide-to="1"></li>
+						</ol>
+					</div>				
+				</div>
+				
+				<div class="news_box rek">
+					<div class="rek_right">
+						
+					</div>
+				</div>
+				<div class="subscribe">
+					<div class="title">Подписывайся на <b>1news.uz</b></div>
+					<form action="">
+						<div class="input-group">
+							<input type="text" name="email" placeholder="Email">
+							<button class="submit">Подписываться</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="foot_about">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-3 col-xs-12"><img src="{% static 'img/logo.png' %}" alt="" class="logo"></div>
+				<div class="col-md-6 col-xs-12">
+					<div class="title">О нас</div>
+					<p>Fintech innovation hub o'quvchisi Islomov Umrzoq tomonidan tayyorlandi.</p>
+				</div>
+				<div class="col-md-3 col-xs-12 text-right">
+					<ul class="social">
+						<li><a href="#"><span class="fa fa-facebook-f"></span></a></li>
+						<li><a href="#"><span class="fa fa-twitter"></span></a></li>
+						<li><a href="#"><span class="fa fa-linkedin"></span></a></li>
+						<li><a href="#"><span class="fa fa-telegram"></span></a></li>
+						<li><a href="#"><span class="fa fa-google-plus"></span></a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+		{% include 'templates/_partials/footer.html' %}
+{% endblock %}

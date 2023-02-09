@@ -1,0 +1,219 @@
+{% extends 'base.html' %}
+{% block title %}Card{% endblock %}
+{% block content %}
+{% load static %}
+
+		{% include '_partials/header.html' %}
+
+	<nav class="navbar">
+  	<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#"><img src="{% static 'img/logo.png' %}" alt=""></a>
+			</div>
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+					<i class="fa fa-close"></i>
+				</button>
+				<ul class="nav navbar-nav">
+					{% for i in ctgs %}
+					<li class="active"><a href="{% url 'category' slug=i.slug %}">{{ i.content }}</a></li>
+					{% endfor %}
+				</ul>
+
+			</div>
+		</div>
+	</nav>
+	<a href="#" class="bigrek"></a>
+	<div class="container wrapper">
+		<div class="longrek"></div>
+		<div class="clearfix"></div>
+		
+		<ol class="breadcrumb">
+			<li><a href="#">Главная</a></li>
+			<li class="active">Политика</li>
+		</ol>
+		<div class="row">
+			<div class="col-md-8 col-xs-12">
+				<div class="cat_title">Найдено 40 результатов для “динамика”</div>
+				<div class="search_box">
+					<form action="#">
+						<div class="input-group">
+							<input type="text" name="search" placeholder="Поиск">
+							<button class="btn submit"><i class="fa fa-search"></i></button>
+						</div>
+					</form>
+				</div>
+				<div class="news_box">
+					<div class="cat_news">
+						<div class="cat_img"><img src="{% static 'img/news1.jpg' %}" alt=""></div>
+						<a href="#">В Узбекистане переработают оборонную доктрину в Узбекистане</a>
+						<p>С учетом динамики развития ситуации в мире и регионе, необходимости адекватного реагирования на возникающие угрозы и вызовы, а также наших приоритетов и возможностей требует переработки Оборонная доктрина Республики Узбекистан.</p>
+						<span class="date">12.01.2017</span>
+						<span class="news_type"><i class="fa fa-pencil"></i> Общество</span>
+					</div>	
+					<div class="cat_news">
+						<div class="cat_img"><img src="{% static 'img/news1.jpg' %}" alt=""></div>
+						<a href="#">В Узбекистане переработают оборонную доктрину в Узбекистане</a>
+						<p>С учетом динамики развития ситуации в мире и регионе, необходимости адекватного реагирования на возникающие угрозы и вызовы, а также наших приоритетов и возможностей требует переработки Оборонная доктрина Республики Узбекистан.</p>
+						<span class="date">12.01.2017</span>
+						<span class="news_type"><i class="fa fa-pencil"></i> Общество</span>
+					</div>
+					<div class="cat_news">
+						<div class="cat_img"><img src="{% static 'img/news1.jpg' %}" alt=""></div>
+						<a href="#">В Узбекистане переработают оборонную доктрину в Узбекистане</a>
+						<p>С учетом динамики развития ситуации в мире и регионе, необходимости адекватного реагирования на возникающие угрозы и вызовы, а также наших приоритетов и возможностей требует переработки Оборонная доктрина Республики Узбекистан.</p>
+						<span class="date">12.01.2017</span>
+						<span class="news_type"><i class="fa fa-pencil"></i> Общество</span>
+					</div>	
+					<div class="cat_news">
+						<div class="cat_img"><img src="{% static 'img/news1.jpg' %}" alt=""></div>
+						<a href="#">В Узбекистане переработают оборонную доктрину в Узбекистане</a>
+						<p>С учетом динамики развития ситуации в мире и регионе, необходимости адекватного реагирования на возникающие угрозы и вызовы, а также наших приоритетов и возможностей требует переработки Оборонная доктрина Республики Узбекистан.</p>
+						<span class="date">12.01.2017</span>
+						<span class="news_type"><i class="fa fa-pencil"></i> Общество</span>
+					</div>	
+					<div class="cat_news">
+						<div class="cat_img"><img src="{% static 'img/news1.jpg' %}" alt=""></div>
+						<a href="#">В Узбекистане переработают оборонную доктрину в Узбекистане</a>
+						<p>С учетом динамики развития ситуации в мире и регионе, необходимости адекватного реагирования на возникающие угрозы и вызовы, а также наших приоритетов и возможностей требует переработки Оборонная доктрина Республики Узбекистан.</p>
+						<span class="date">12.01.2017</span>
+						<span class="news_type"><i class="fa fa-pencil"></i> Общество</span>
+					</div>
+					<nav aria-label="Page navigation">
+						<ul class="pagination">
+							<li>
+								<a href="#" aria-label="Previous">
+									<span aria-hidden="true">&laquo;</span>
+								</a>
+							</li>
+							<li><a href="#">1</a></li>
+							<li><a href="#">2</a></li>
+							<li><a href="#">3</a></li>
+							<li><a href="#">4</a></li>
+							<li><a href="#">5</a></li>
+							<li>
+								<a href="#" aria-label="Next">
+									<span aria-hidden="true">&raquo;</span>
+								</a>
+							</li>
+						</ul>
+					</nav>											
+				</div>
+			</div>
+			<div class="col-md-4 col-xs-12">
+				<div class="head_title">Свежие новости</div>
+				<div id="listnews" class="carousel slide listnews" data-ride="carousel">
+					<div class="news_box">
+						<div class="carousel-inner" role="listbox">
+							<div class="item active">
+								<ul class="list_news">
+									<li>
+										<div class="list_img"><img src="{% static 'img/news1.jpg' %}" alt=""></div>
+										<a href="#">Dolor sit amet, consectetuer adipiscing elit.</a>
+										<span class="date">12.01.2017</span>
+										<span class="news_type"><i class="fa fa-pencil"></i> Общество</span>
+									</li>
+									<li>
+										<div class="list_img"><img src="{% static 'img/news1.jpg' %}" alt=""></div>
+										<a href="#">Dolor sit amet, consectetuer adipiscing elit.</a>
+										<span class="date">12.01.2017</span>
+										<span class="news_type"><i class="fa fa-pencil"></i> Общество</span>
+									</li>
+									<li>
+										<div class="list_img"><img src="{% static 'img/news1.jpg' %}" alt=""></div>
+										<a href="#">Dolor sit amet, consectetuer adipiscing elit.</a>
+										<span class="date">12.01.2017</span>
+										<span class="news_type"><i class="fa fa-pencil"></i> Общество</span>
+									</li>
+									<li>
+										<div class="list_img"><img src="{% static 'img/news1.jpg' %}" alt=""></div>
+										<a href="#">Dolor sit amet, consectetuer adipiscing elit.</a>
+										<span class="date">12.01.2017</span>
+										<span class="news_type"><i class="fa fa-pencil"></i> Общество</span>
+									</li>
+								</ul>
+							</div>
+							<div class="item">
+								<ul class="list_news">
+									<li>
+										<div class="list_img"><img src="{% static 'img/news1.jpg' %}" alt=""></div>
+										<a href="#">Dolor sit amet, consectetuer adipiscing elit.</a>
+										<span class="date">12.01.2017</span>
+										<span class="news_type"><i class="fa fa-pencil"></i> Общество</span>
+									</li>
+									<li>
+										<div class="list_img"><img src="{% static 'img/news1.jpg' %}" alt=""></div>
+										<a href="#">Dolor sit amet, consectetuer adipiscing elit.</a>
+										<span class="date">12.01.2017</span>
+										<span class="news_type"><i class="fa fa-pencil"></i> Общество</span>
+									</li>
+									<li>
+										<div class="list_img"><img src="{% static 'img/news1.jpg' %}" alt=""></div>
+										<a href="#">Dolor sit amet, consectetuer adipiscing elit.</a>
+										<span class="date">12.01.2017</span>
+										<span class="news_type"><i class="fa fa-pencil"></i> Общество</span>
+									</li>
+									<li>
+										<div class="list_img"><img src="{% static 'img/news1.jpg' %}" alt=""></div>
+										<a href="#">Dolor sit amet, consectetuer adipiscing elit.</a>
+										<span class="date">12.01.2017</span>
+										<span class="news_type"><i class="fa fa-pencil"></i> Общество</span>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="indi_box">
+						<ol class="carousel-indicators">
+							<li data-target="#listnews" data-slide-to="0" class="active"></li>
+							<li data-target="#listnews" data-slide-to="1"></li>
+						</ol>
+					</div>				
+				</div>
+				
+				<div class="news_box rek">
+					<div class="rek_right">
+						
+					</div>
+				</div>
+				<div class="subscribe">
+					<div class="title">Подписывайся на <b>1news.uz</b></div>
+					<form action="">
+						<div class="input-group">
+							<input type="text" name="email" placeholder="Email">
+							<button class="submit">Подписываться</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="foot_about">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-3 col-xs-12"><img src="{% static 'img/logo.png' %}" alt="" class="logo"></div>
+				<div class="col-md-6 col-xs-12">
+					<div class="title">О нас</div>
+					<p>Fintech innovation hub o'quvchisi Islomov Umrzoq tomonidan tayyorlandi.</p>
+				</div>
+				<div class="col-md-3 col-xs-12 text-right">
+					<ul class="social">
+						<li><a href="#"><span class="fa fa-facebook-f"></span></a></li>
+						<li><a href="#"><span class="fa fa-twitter"></span></a></li>
+						<li><a href="#"><span class="fa fa-linkedin"></span></a></li>
+						<li><a href="#"><span class="fa fa-telegram"></span></a></li>
+						<li><a href="#"><span class="fa fa-google-plus"></span></a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+		{% include '_partials/footer.html' %}
+
+{% endblock %}

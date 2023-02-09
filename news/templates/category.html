@@ -1,0 +1,170 @@
+{% extends 'base.html' %}
+{% block title %}Card{% endblock %}
+{% block content %}
+{% load static %}
+
+	<nav class="navbar">
+		{% include '_partials/header.html' %}
+  	<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="{% url 'index' %}"><img src="{% static 'img/logo.png' %}" alt=""></a>
+			</div>
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+					<i class="fa fa-close"></i>
+				</button>
+				<ul class="nav navbar-nav">
+					{% for i in ctgs %}
+					<li class="active"><a href="{% url 'category' slug=i.slug %}">{{ i.content }}</a></li>
+					{% endfor %}
+				</ul>
+
+			</div>
+		</div>
+	</nav>
+	<a href="#" class="bigrek"></a>
+	<div class="container wrapper">
+		<div class="clearfix"></div>
+		<ol class="breadcrumb">
+			<li><a href="{% url 'index' %}">Главная</a></li>
+			<li class="active">{{ ctg.content }}</li>
+		</ol>
+		<div class="row">
+			<div class="col-md-8 col-xs-12">
+				<div class="cat_title">{{ ctg.content }}</div>
+				<div class="news_box">
+					{% for i in news %}
+
+						<div class="cat_news">
+							<div class="cat_img"><img src="{{ i.img.url }}" alt=""></div>
+							<a href="{% url 'view' pk=i.id %}">{{ i.title }}</a>
+							<p>{{ i.short_description }}</p>
+							<span class="date">{{ i.date }}</span>
+							<span class="news_type"><i class="fa fa-pencil"></i>{{ i.ctg.content }}</span>
+						</div>
+
+					{% endfor %}
+
+					<nav aria-label="Page navigation">
+						<ul class="pagination">
+							<li>
+								<a href="#" aria-label="Previous">
+									<span aria-hidden="true">&laquo;</span>
+								</a>
+							</li>
+							<li><a href="#">1</a></li>
+							<li><a href="#">2</a></li>
+							<li><a href="#">3</a></li>
+							<li><a href="#">4</a></li>
+							<li><a href="#">5</a></li>
+							<li>
+								<a href="#" aria-label="Next">
+									<span aria-hidden="true">&raquo;</span>
+								</a>
+							</li>
+						</ul>
+					</nav>											
+				</div>
+			</div>
+			<div class="col-md-4 col-xs-12">
+				<div class="head_title">Актуалний новости</div>
+				<div id="listnews" class="carousel slide listnews" data-ride="carousel">
+					<div class="news_box">
+						<div class="carousel-inner" role="listbox">
+							<div class="item active">
+								<ul class="list_news">
+									{% for i in news %}
+									{% if forloop.counter < 4 %}
+										<li>
+											<div class="list_img"><img src="{{ i.img.url }}" alt=""></div>
+											<a href="{% url 'view' pk=i.id %}">{{ i.title }}</a>
+											<span class="date">{{ i.date }}</span>
+											<span class="news_type"><i class="fa fa-pencil"></i>{{ i.ctg.content }}</span>
+										</li>
+									{% endif %}
+									{% endfor %}
+								</ul>
+							</div>
+							<div class="item">
+								<ul class="list_news">
+									<li>
+										<div class="list_img"><img src="{% static 'img/news1.jpg' %}" alt=""></div>
+										<a href="#">Dolor sit amet, consectetuer adipiscing elit.</a>
+										<span class="date">12.01.2017</span>
+										<span class="news_type"><i class="fa fa-pencil"></i> Общество</span>
+									</li>
+									<li>
+										<div class="list_img"><img src="{% static 'img/news1.jpg' %}" alt=""></div>
+										<a href="#">Dolor sit amet, consectetuer adipiscing elit.</a>
+										<span class="date">12.01.2017</span>
+										<span class="news_type"><i class="fa fa-pencil"></i> Общество</span>
+									</li>
+									<li>
+										<div class="list_img"><img src="{% static 'img/news1.jpg' %}" alt=""></div>
+										<a href="#">Dolor sit amet, consectetuer adipiscing elit.</a>
+										<span class="date">12.01.2017</span>
+										<span class="news_type"><i class="fa fa-pencil"></i> Общество</span>
+									</li>
+									<li>
+										<div class="list_img"><img src="{% static 'img/news1.jpg' %}" alt=""></div>
+										<a href="#">Dolor sit amet, consectetuer adipiscing elit.</a>
+										<span class="date">12.01.2017</span>
+										<span class="news_type"><i class="fa fa-pencil"></i> Общество</span>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="indi_box">
+						<ol class="carousel-indicators">
+							<li data-target="#listnews" data-slide-to="0" class="active"></li>
+							<li data-target="#listnews" data-slide-to="1"></li>
+						</ol>
+					</div>				
+				</div>
+				
+				<div class="news_box rek">
+					<div class="rek_right">
+						
+					</div>
+				</div>
+				<div class="subscribe">
+					<div class="title">Подписывайся на <b>1news.uz</b></div>
+					<form action="">
+						<div class="input-group">
+							<input type="text" name="email" placeholder="Email">
+							<button class="submit">Подписываться</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="foot_about">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-3 col-xs-12"><img src="{% static 'img/logo.png' %}" alt="" class="logo"></div>
+				<div class="col-md-6 col-xs-12">
+					<div class="title">О нас</div>
+					<p>Fintech innovation hub o'quvchisi Islomov Umrzoq tomonidan tayyorlandi.</p>
+				</div>
+				<div class="col-md-3 col-xs-12 text-right">
+					<ul class="social">
+						<li><a href="#"><span class="fa fa-facebook-f"></span></a></li>
+						<li><a href="#"><span class="fa fa-twitter"></span></a></li>
+						<li><a href="#"><span class="fa fa-linkedin"></span></a></li>
+						<li><a href="#"><span class="fa fa-telegram"></span></a></li>
+						<li><a href="#"><span class="fa fa-google-plus"></span></a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+		{% include '_partials/footer.html' %}
+{% endblock %}
