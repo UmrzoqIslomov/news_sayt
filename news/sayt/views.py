@@ -15,7 +15,6 @@ def index(requests):
     news = News.objects.all().order_by("-pk")
     tex_ctg = Category.objects.get(slug='texnologiya')
     texnologiya = News.objects.filter(ctg=tex_ctg).order_by("-pk")
-
     sportctg = Category.objects.get(slug="sport")
     sport_new = News.objects.filter(ctg=sportctg).order_by("-pk")
     jahon_ctg = Category.objects.get(slug='jahon')
@@ -76,6 +75,7 @@ def search(requests):
 
 
 def view(requests, pk):
+    print(pk)
     ctgs = Category.objects.all()
     new = News.objects.get(pk=pk)
     news = News.objects.all().order_by('-pk')

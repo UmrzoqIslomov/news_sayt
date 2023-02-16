@@ -75,28 +75,17 @@
 				<div class="comment">
 					<div class="title">Комменты</div>
 					<ul>
+						{% for i in comments %}
 						<li>
-							<div class="com_img"><img src="{% static 'img/ava.jpg' %}" alt=""></div>
 							<div class="com_info">
-								<div class="author">Adam Levine</div>
-								<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.</p>
-								<div class="date">02.02.2017</div>
+								<div class="author">{{ i.name }}</div>
+								<p>{{ i.text }}</p>
+								<div class="date">{{ i.date }}</div>
 								<hr>
 							</div>
-							<ul class="sub">
-								<li>
-									<div class="com_img"><img src="{% static 'img/ava.jpg' %}" alt=""></div>
-									<div class="com_info">
-										<div class="author">Adam Levine</div>
-										<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.</p>
-										<div class="date">02.02.2017</div>
-										<hr>
-									</div>
 
-								</li>
-							</ul>
 						</li>
-
+						{% endfor %}
 					</ul>
 					<button class="btn add_comment">Добавить комментарий</button>
 					<div class="add_info">Приветствуются интересные и осмысленные комментарии по теме материала.</div>
@@ -114,7 +103,7 @@
 										{% if forloop.counter < 5 %}
 									<li>
 										<div class="list_img"><img src="{{ i.img.url }}" alt=""></div>
-										<a href="{% url 'view' pk=i.id %}">{{ i.title }}.</a>
+										<a href="{% url 'index' %}">{{ i.title }}.</a>
 										<span class="date">{{ i.date }}</span>
 										<span class="news_type"><i class="fa fa-pencil"></i>{{ i.ctg.content }}</span>
 									</li>
@@ -129,7 +118,7 @@
 									{% if forloop.counter > 5 and forloop.counter < 8 %}
 									<li>
 										<div class="list_img"><img src="{{ i.img.url }}" alt=""></div>
-										<a href="{% url 'view' pk=i.id %}">{{ i.title }}</a>
+										<a href="{% url 'index' %}">{{ i.title }}</a>
 										<span class="date">{{ i.date }}</span>
 										<span class="news_type"><i class="fa fa-pencil"></i>{{ i.ctg.content }}</span>
 									</li>

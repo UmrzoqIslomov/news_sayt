@@ -70,6 +70,7 @@
 			<div class="big_fav">
 				<div id="bigfav" class="carousel slide" data-ride="carousel">
 					<div class="carousel-inner" role="listbox">
+						{% for news in news %}
 						<div class="item active">
 							<img src="{{ news.0.img.url }}" alt="...">
 								<a href="{% url 'view' pk=news.0.id %}">
@@ -84,7 +85,7 @@
 									</div>
 								</a>
 						</div>
-						
+						{% endfor %}
 					</div>
 					<div class="control">
 					<a class="left carousel-control" href="#bigfav" role="button" data-slide="prev">
@@ -146,6 +147,7 @@
 					<div class="row">
 						<div class="col-md-6 col-xs-12">
 							<div class="big_news">
+								{% for
 								<div class="big_n_img"><img src="{{ jahon_news.0.img.url }}" alt=""></div>
 								<a href="{% url 'view' pk=jahon_news.0.id %}">{{ jahon_news.0.title }}</a>
 								<span class="date">{{ jahon_news.0.date }}</span>

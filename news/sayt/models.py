@@ -29,3 +29,13 @@ class News(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class Comments(models.Model):
+    name = models.CharField(max_length=128)
+    text = models.TextField()
+    date = models.DateField(auto_now_add=True)
+    new = models.ForeignKey(News, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.name
