@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Category
+from .models import Category, Comments
 from .models import News
 import requests as re
 
@@ -76,10 +76,13 @@ def search(requests):
 
 def view(requests, pk):
     print(pk)
+    comments = Comments.objects.all()
     ctgs = Category.objects.all()
+    print(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>",pk)
     new = News.objects.get(pk=pk)
     news = News.objects.all().order_by('-pk')
     ctx = {
+        "comments":comments,
         "ctgs": ctgs,
         "valyuta": valyuta,
         "new": new,
