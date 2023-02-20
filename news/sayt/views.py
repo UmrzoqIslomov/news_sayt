@@ -56,7 +56,6 @@ def category(requests, slug):
 
 def contact(requests):
     ctgs = Category.objects.all()
-
     ctx = {
         "ctgs": ctgs,
         "valyuta": valyuta
@@ -76,15 +75,20 @@ def search(requests):
 
 def view(requests, pk):
     print(pk)
-    comments = Comments.objects.all()
     ctgs = Category.objects.all()
-    print(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>",pk)
     new = News.objects.get(pk=pk)
     news = News.objects.all().order_by('-pk')
+    comments = Comments.objects.filter(new=new)
+    if requests.POST:
+        comment = Comments()
+        comment.name = requests.POST.get("name", "")
+        comment.text = requests.POST.get("text", "")
+        comment.new = new
+        comment.save()
     ctx = {
-        "comments":comments,
         "ctgs": ctgs,
         "valyuta": valyuta,
+        "comments": comments,
         "new": new,
         "news": news,
 

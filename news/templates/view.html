@@ -1,9 +1,11 @@
-{% extends 'templates/base.html' %}
+
+
+{%extends "base.html" %}
 {% block title %}Card{% endblock %}
 {% block content %}
 {% load static %}
 
-		{% include 'templates/_partials/header.html' %}
+		{% include '_partials/header.html' %}
 
 	<nav class="navbar">
   	<div class="container">
@@ -87,10 +89,20 @@
 						</li>
 						{% endfor %}
 					</ul>
-					<button class="btn add_comment">Добавить комментарий</button>
+					<form method="post">
+						{% csrf_token %}
+						<input type="text" id="name" name="name" class="add_comment" placeholder="Name">
+						<textarea id="text" name="text" cols="30" rows="10" class="add_comment">
+
+						</textarea>
+						<button class="btn add_comment">Добавить комментарий</button>
+					</form>
+
 					<div class="add_info">Приветствуются интересные и осмысленные комментарии по теме материала.</div>
+
 				</div>
 				</div>
+
 			</div>
 			<div class="col-md-4 col-xs-12">
 				<div class="head_title">Свежие новости</div>
@@ -174,5 +186,5 @@
 			</div>
 		</div>
 	</div>
-		{% include 'templates/_partials/footer.html' %}
+		{% include '_partials/footer.html' %}
 {% endblock %}
